@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,11 +19,12 @@
     <section class="navbar">
       <a href="home.html" class="btn"> Home </a>
       <a href="trainer.html" class="btn"> Trainer </a>
-      <a href="pokemon-card.html" class="btn" id="active"> Pokemon Card </a>
-      <a href="collection.html" class="btn"> Collection </a>
+      <a href="{% url 'card_list' %}" class="btn" id="active"> Pokemon Card </a>
+      <a href="{% url 'collection' %}" class="btn"> Collection </a>
     </section>
 
     <main>
+      {% block content %}
       <!--CARDS-->
       <section class="cards-container">
         <!--PIKACHU-->
@@ -511,31 +515,9 @@
           </div>
         </div>
       </section>
+      {% endblock %}
     </main>
 
-    <footer>
-      <br />
-      <br />
-      <p>
-        POKEMON<br />
-        Gotta Catch 'Em All
-      </p>
-      <br>
-      <div class="social-icons">
-        <a href="https://github.com/developer" target="_blank" class="icon-link">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://facebook.com/yourpage" target="_blank" class="icon-link">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://instagram.com/youraccount" target="_blank" class="icon-link">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <!-- Add other social media icons similarly -->
-      </div>
-      <p>
-        &copy; 2023 YourWebsiteName. All Rights Reserved.
-      </p>
-  </footer>
+    {% include 'includes/footer.html' %}
   </body>
 </html>
