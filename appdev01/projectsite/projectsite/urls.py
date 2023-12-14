@@ -36,7 +36,7 @@ Including another URLconf
 # ]
 from django.contrib import admin
 from django.urls import path
-from cardquest.views import HomePageView, TrainerList,Collection,PokemonCard
+from cardquest.views import HomePageView, TrainerList,Collection,PokemonCard,TrainerCreateView,TrainerUpdateView,TrainerDeleteView
 from cardquest import views
 
 urlpatterns = [
@@ -45,6 +45,26 @@ urlpatterns = [
     path('trainer_list', TrainerList.as_view(), name='trainer-list'),
     path('card_list', PokemonCard.as_view(), name='card_list'),
     path('collection', Collection.as_view(), name='collection'),
-    
+    path('trainer_list/add', TrainerCreateView.as_view(), name='trainer-add'),
+    path('trainer_list/<pk>', TrainerUpdateView.as_view(), name='trainer-update'),
+    path('trainer_list/<pk>/delete',TrainerDeleteView.as_view(), name='trainer-delete')
 
 ]
+# from django.contrib import admin
+# from django.urls import path
+# from cardquest.views import (
+#     HomePageView, TrainerList, Collection, PokemonCard,
+#     TrainerCreateView, TrainerUpdateView, TrainerDeleteView
+# )
+# from cardquest import views
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('', views.HomePageView.as_view(), name='home'),
+#     path('trainer_list/', TrainerList.as_view(), name='trainer-list'),
+#     path('card_list/', PokemonCard.as_view(), name='card_list'),
+#     path('collection/', Collection.as_view(), name='collection'),
+#     path('trainer_list/add/', TrainerCreateView.as_view(), name='trainer-add'),
+#     path('trainer_list/<pk>/', TrainerUpdateView.as_view(), name='trainer-update'),
+#     path('trainer_list/<pk>/delete/', TrainerDeleteView.as_view(), name='trainer-delete'),
+# ]
