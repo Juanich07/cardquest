@@ -36,20 +36,31 @@ Including another URLconf
 # ]
 from django.contrib import admin
 from django.urls import path
-from cardquest.views import HomePageView, TrainerList,Collection,PokemonCard,TrainerCreateView,TrainerUpdateView,TrainerDeleteView
+from cardquest.views import HomePageView, TrainerList,CollectionList,PokemonCard,TrainerCreateView,TrainerUpdateView,TrainerDeleteView,CollectionCreateView,CollectionUpdateView,CollectionDeleteView,CollectionList,PokemonCardCreateView,PokemonCardUpdateView,PokemonCardDeleteView,PokemonCardListView
 from cardquest import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomePageView.as_view(), name='home'),
     path('trainer_list', TrainerList.as_view(), name='trainer-list'),
-    path('card_list', PokemonCard.as_view(), name='card_list'),
-    path('collection', Collection.as_view(), name='collection'),
+    # path('pokemoncard', PokemonCardListView.as_view(), name='pokemoncard'),
+    path('collection', CollectionList.as_view(), name='collection-list'),
     path('trainer_list/add', TrainerCreateView.as_view(), name='trainer-add'),
     path('trainer_list/<pk>', TrainerUpdateView.as_view(), name='trainer-update'),
-    path('trainer_list/<pk>/delete',TrainerDeleteView.as_view(), name='trainer-delete')
+    path('trainer_list/<pk>/delete',TrainerDeleteView.as_view(), name='trainer-delete'),
+    path('collections/add', CollectionCreateView.as_view(), name='collection-add'),
+    path('collections/<pk>', CollectionUpdateView.as_view(), name='collection-update'),
+    path('collections/<pk>/delete', CollectionDeleteView.as_view(), name='collection-delete'),
+    
+    path('pokemoncard_list/add', PokemonCardCreateView.as_view(), name='pokemoncard-add'),
+    path('pokemoncard_list/<pk>', PokemonCardUpdateView.as_view(), name='pokemoncard-update'),
+    path('pokemoncard_list/<pk>/delete', PokemonCardDeleteView.as_view(), name='pokemoncard-delete'),
+    path('collections/', CollectionList.as_view(), name='collection-list'),
+    path('pokemoncard_list/', PokemonCardListView.as_view(), name='pokemoncard-list'),
 
 ]
+
+
 # from django.contrib import admin
 # from django.urls import path
 # from cardquest.views import (
